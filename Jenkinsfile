@@ -31,8 +31,8 @@ pipeline {
 
         stage('Deploy Kubernates') {
             steps {
-                sh 'chmod 777 ./run_kubernates.sh'
-                sh './run_kubernates.sh'
+                sh 'chmod 777 ./run_kubernetes.sh'
+                sh './run_kubernetes.sh'
             }
         }
     }
