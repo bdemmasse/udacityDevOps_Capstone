@@ -4,9 +4,7 @@ pipeline {
         stage('Lint Html') {
             steps {
                 sh 'echo "linting started"'
-
                 sh 'tidy -q -e *.html'
-
                 sh 'echo "linting completed"'
             }
         }
@@ -15,7 +13,6 @@ pipeline {
                 sh 'echo "docker build started"'
                 sh 'chmod 777 ./run_docker.sh'
                 sh './run_docker.sh'
-
                 sh 'echo "docker build completed"'
             }
         }
@@ -23,9 +20,10 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 sh 'echo "pushing to docker hub"'
-                sh 'echo "$USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW"'
+                sh 'chmod 777 ./upload_docker.sh'
+                sh './upload_docker.sh'
+                sh 'echo "pushing to docker hub completed"'
 
-                sh './upload_docker.sh $USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW'
             }
         }
     }
