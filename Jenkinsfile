@@ -26,7 +26,13 @@ pipeline {
                 sh 'chmod 777 ./upload_docker.sh'
                 sh './upload_docker.sh $USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW'
                 sh 'echo "pushing to docker hub completed"'
+            }
+        }
 
+        stage('Deploy Kubernates') {
+            steps {
+                sh 'chmod 777 ./run_kubernates.sh'
+                sh './run_kubernates.sh'
             }
         }
     }
