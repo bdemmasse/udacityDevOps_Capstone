@@ -1,7 +1,4 @@
 pipeline {
-    environment {
-        USER_CREDENTIALS = credentials('dockerhub')
-    }
     agent any
     stages {
         stage('Lint Html') {
@@ -12,17 +9,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh './run_docker.sh'
-            }
-        }
-        stage('Push to Docker Hub') {
-            steps {
-                sh 'echo "$USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW"'
-                sh './upload_docker.sh $USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW'
-            }
-        }
-        stage('Pull from Docker Hub and Run Kubernetes') {
-             steps {
-                sh './run_kubernetes.sh'
             }
         }
     }
