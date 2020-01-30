@@ -28,12 +28,5 @@ pipeline {
                 sh 'echo "pushing to docker hub completed"'
             }
         }
-
-        stage('Deploy Kubernates') {
-            steps {
-                sh 'chmod 777 ./run_kubernetes.sh'
-                sh './run_kubernetes.sh'
-            }
-        }
     }
 }
