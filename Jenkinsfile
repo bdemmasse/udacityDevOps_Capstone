@@ -13,10 +13,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'echo "docker build started"'
-
+                sh 'chmod 777 ./run_docker.sh'
                 sh './run_docker.sh'
 
-                 sh 'echo "docker build completed"'
+                sh 'echo "docker build completed"'
             }
         }
 
