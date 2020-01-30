@@ -12,7 +12,7 @@ dockerpath="raphaelolams/capstone"
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 
-docker login
+docker login --username $1 --password $2
 docker tag capstone:latest $dockerpath:latest
 
 

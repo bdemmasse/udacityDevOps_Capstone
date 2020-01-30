@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        USER_CREDENTIALS = credentials('dockerhub')
+    }
     agent any
     stages {
         stage('Lint Html') {
@@ -21,7 +24,7 @@ pipeline {
             steps {
                 sh 'echo "pushing to docker hub"'
                 sh 'chmod 777 ./upload_docker.sh'
-                sh './upload_docker.sh'
+                sh './upload_docker.sh $USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW'
                 sh 'echo "pushing to docker hub completed"'
 
             }
