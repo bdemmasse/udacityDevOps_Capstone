@@ -4,7 +4,7 @@ pipeline {
     }
     agent any
     stages {
-        stage('Lint Vue') {
+        stage('Lint Html') {
             steps {
                 sh 'tidy -q -e *.html'
             }
@@ -19,9 +19,9 @@ pipeline {
                 sh './upload_docker.sh $USER_CREDENTIALS_USR $USER_CREDENTIALS_PSW'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh './create_infra.sh'
+        stage('Pull from Docker Hub and Run Kubernetes') {
+             steps {
+                sh './run_kubernetes.sh'
             }
         }
     }

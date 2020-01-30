@@ -8,7 +8,7 @@ dockerpath="raphaelolams/capstone"
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run capstone --image=$dockerpath --port=80 --labels app=api --generator=run-pod/v1
+kubectl run capstone --image=$dockerpath --port=80 --labels app=capstone --generator=run-pod/v1
 # Step 3:
 # List kubernetes pods
 sleep 10

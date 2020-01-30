@@ -2,5 +2,5 @@
 
 UUID="$(uuidgen)"
 
-aws cloudformation create-stack --stack-name capstone_project$UUID --template-body file://capstone_infra.yml \
---parameters file://capstone_infra_parameter.json --region=eu-west-1
+aws cloudformation create-stack --stack-name capstone_project$UUID --template-body file://server.yml \
+--parameters file://server-parameters.json --region=eu-west-1
